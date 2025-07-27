@@ -1,5 +1,7 @@
+#model_fit.py
 import numpy as np
 import pandas as pd
+import json
 from scipy.optimize import curve_fit
 
 R_GAS = 1.987204258e-3  # kcal/(mol*K)
@@ -34,7 +36,7 @@ def DAM_fit(model_func, data, initial_params):
     # Model expects rho = 1 - exp(f_model), so define wrapper:
     def rho_model(tT, *params):
         f_val = model_func(tT, *params)
-        f_val = np.clip(f_val, -700, 700)  # evita overflow no exp
+        f_val = np.clip(f_val, -700, 700) 
         return 1 - np.exp(f_val)
 
     # Perform curve fitting
@@ -81,11 +83,14 @@ def fit_all_models(data):
         fit_result = DAM_fit(model_func, data, initial_params)
         res = {
             'model': model_name,
-            'params': fit_result['params'],
-            'errors': fit_result['errors'],
+            'params': json.dumps(fit_result['params'].tolist()),
+            'errors': json.dumps(fit_result['errors'].tolist()),
             'r_squared': fit_result['r_squared'],
             'chi_squared': fit_result['chi_squared'],
-            'reduced_chi_squared': fit_result['reduced_chi_squared']
+            'reduced_chi_squared': fit_result['reduced_chi_squared'],
+            'residuals': json.dumps(fit_result['residuals'].tolist()),
+            'fitted_values': json.dumps(fit_result['fitted_values'].tolist()),
+            'sigma': json.dumps(fit_result['sigma'].tolist())
         }
         results.append(res)
 
