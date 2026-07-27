@@ -1,0 +1,86 @@
+{
+  "FC": {
+    "order": [
+      "c0",
+      "c1",
+      "c2",
+      "c3"
+    ],
+    "params_published": [
+      -9.449,
+      0.1627,
+      -24.58,
+      -0.8626
+    ],
+    "covariance": [
+      [
+        6.648322291326738,
+        -0.13310868656440433,
+        34.17587513542803,
+        0.683327308920081
+      ],
+      [
+        -0.13310868656440955,
+        0.0026769329588787983,
+        -0.6819321821244527,
+        -0.013688526527491494
+      ],
+      [
+        34.17587513542589,
+        -0.6819321821243837,
+        178.31411383678483,
+        3.5549049317029793
+      ],
+      [
+        0.6833273089200609,
+        -0.01368852652749057,
+        3.5549049317030974,
+        0.07111412843963559
+      ]
+    ],
+    "chi_squared": 112.79999999999954,
+    "reduced_chi_squared": 1.8799999999999923,
+    "n_points": 64,
+    "dof": 60,
+    "sigma_l0": 0.35083201134751435,
+    "L0": 16.52,
+    "source": "Rufino et al. (2023), Table 1 (params reused from Rufino & Guedes 2022) - c0=-9.449(1.480), c1=0.1627(0.0298), c2=-24.58(7.75), c3=-0.8626(0.1549), chi2_red=1.88. Covariance derived 2026-07-27: sigma_L0 back-solved per-model to reproduce the PUBLISHED chi2_red exactly (previous sigma_l0=0.14503 shared value targeted an incorrect chi2_red=1.77, not the real 1.88 - see LOG.md)."
+  },
+  "PA": {
+    "order": [
+      "c0",
+      "c1",
+      "c2"
+    ],
+    "params_published": [
+      5.631,
+      0.1865,
+      -10.46
+    ],
+    "covariance": [
+      [
+        0.06209685765409166,
+        0.0011199336880000222,
+        -0.08493084033451195
+      ],
+      [
+        0.0011199336880000376,
+        4.808684199380287e-05,
+        -0.0019249603950189493
+      ],
+      [
+        -0.08493084033451216,
+        -0.0019249603950189324,
+        0.12187804985346608
+      ]
+    ],
+    "chi_squared": 161.65,
+    "reduced_chi_squared": 2.65,
+    "n_points": 64,
+    "dof": 61,
+    "sigma_l0": 0.28812806755479997,
+    "L0": 16.52,
+    "source": "Rufino et al. (2023), Table 1 (params reused from Rufino & Guedes 2022) - c0=5.631(0.220), c1=0.1865(0.0066), c2=-10.46(0.31), chi2_red=2.65. Covariance derived 2026-07-27: sigma_L0 back-solved per-model to reproduce the PUBLISHED chi2_red exactly."
+  },
+  "note": "nominal params = published values (Table 1, Rufino et al. 2023), FIXED (never refit). covariance = derived by finding sigma_L0 (per model, not shared) such that chi2_red(published_params, sigma_L0) equals the published chi2_red exactly, then taking the Gauss-Newton covariance (inv(J^T J)) of the residual function at that fixed point. Dataset: Artigo_1/data/DurangoDataR.txt (64 points, all included, no exclusions applied)."
+}
